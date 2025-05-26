@@ -79,9 +79,6 @@ public class MainMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_GamemodesActionPerformed
 
-    public static void main(String args[]) {
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JButton Contact;

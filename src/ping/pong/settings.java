@@ -7,7 +7,6 @@ public class settings extends javax.swing.JFrame {
 
     public settings() {
     initComponents();
-    saveButton.addActionListener(e -> saveSettings()); 
     loadSettings();
     }
     
@@ -78,6 +77,11 @@ public class settings extends javax.swing.JFrame {
         saveButton.setBorderPainted(false);
         saveButton.setContentAreaFilled(false);
         saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 690, 200, 70));
 
         resetButton.setBorder(null);
@@ -110,8 +114,8 @@ public class settings extends javax.swing.JFrame {
         pointsToWinComboBox.setSelectedItem(10);
         audioVolumeSlider.setValue(80);
     }//GEN-LAST:event_resetButtonActionPerformed
-    // Save settings to persistent storage
-    private void saveSettings() {
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
             Preferences prefs = Preferences.userRoot().node(this.getClass().getName());
 
@@ -127,9 +131,8 @@ public class settings extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error saving settings: " + e.getMessage(), 
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
-    
+    }//GEN-LAST:event_saveButtonActionPerformed
+
     private void loadSettings() {
         try {
             Preferences prefs = Preferences.userRoot().node(this.getClass().getName());
@@ -144,13 +147,6 @@ public class settings extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error loading settings: " + e.getMessage(),
                 "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-        
-    private void initializeSettings() {
-        // 1. Connect the save button
-        saveButton.addActionListener(e -> saveSettings());
-        // 2. Load saved settings
-        loadSettings();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
